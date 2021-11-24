@@ -1,0 +1,69 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --grid-size: 15px;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.panel {
+    height: 20%;
+    width: 1000px;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.window {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(40, auto);
+    border: 1px solid red;
+}
+
+.grid {
+    width: var(--grid-size);
+    height: var(--grid-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.submit {
+    display: none;
+}
+
+.submit.show {
+    display: block;
+}
+
+.grid.edge {
+    background-color: red;
+}
+
+.grid.snake {
+    background-color: green;
+}
+
+.grid.food {
+    background-color: blue;
+}
