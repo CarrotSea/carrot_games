@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
     <p>This is a gallery for some funny little games I've written with HTML, CSS, and JavaScript. </p>
     <p>Log in to compete with others by submitting your records!</p>
     <p>Register if you do not have an account yet.</p>
-    <p>Check your ranks here.</p>
+    <p>Check your <a href="HelloServlet?action=rank">ranks</a> here.</p>
     <p>Have fun!</p>
 </header>
 <section id="gallery">

@@ -13,6 +13,6 @@ submit.addEventListener('click', function() {
             alert(text);
         }
     }
-    request.open('POST', '../../HelloServlet', true);
+    request.open('POST', 'HelloServlet', true);
     request.send(form);
 })

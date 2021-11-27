@@ -1,5 +1,7 @@
 package com.alex.carrot_games.data;
 import com.alex.carrot_games.business.User;
+import com.alex.carrot_games.util.DBUtil;
+
 import java.sql.*;
 
 public class UserDB {
@@ -9,7 +11,7 @@ public class UserDB {
         String query = "INSERT INTO Users (id, passwd) "
                         + "VALUES (?, ?)";
         try {
-            connection = getConnection();
+            connection = DBUtil.getConnection();
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getId());
             ps.setString(2, user.getPassword());
@@ -33,7 +35,7 @@ public class UserDB {
         String query = "SELECT id, passwd FROM users"
                         + " WHERE id = ?";
         try {
-            connection = getConnection();
+            connection = DBUtil.getConnection();
             ps = connection.prepareStatement(query);
             ps.setString(1, id);
             rs = ps.executeQuery();
@@ -64,7 +66,7 @@ public class UserDB {
         ResultSet rs = null;
         String query = "SELECT id FROM users WHERE id = ?";
         try {
-            connection = getConnection();
+            connection = DBUtil.getConnection();
             ps = connection.prepareStatement(query);
             ps.setString(1, id);
             rs = ps.executeQuery();
@@ -88,7 +90,7 @@ public class UserDB {
         PreparedStatement ps = null;
         String query = "DELETE FROM users WHERE id = ?";
         try {
-            connection = getConnection();
+            connection = DBUtil.getConnection();
             ps = connection.prepareStatement(query);
             ps.setString(1, id);
             ps.executeUpdate();
@@ -101,26 +103,6 @@ public class UserDB {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-        }
-    }
-
-    public static Connection getConnection() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException E) {
-            E.printStackTrace();
-        }
-        String dbURL = "jdbc:mysql://localhost:3306/carrot_games";
-        String username = "root";
-        String password = "12345yxlm";
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(
-                    dbURL, username, password);
-            return connection;
-        } catch (SQLException e) {
-            System.out.println(e);
-            return null;
         }
     }
 

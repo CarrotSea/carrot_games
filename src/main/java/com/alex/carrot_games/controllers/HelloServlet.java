@@ -1,13 +1,17 @@
 package com.alex.carrot_games.controllers;
 
 import com.alex.carrot_games.business.User;
+import com.alex.carrot_games.data.RecordDB;
 import com.alex.carrot_games.util.CookieUtil;
 import com.alex.carrot_games.data.UserDB;
+import com.alex.carrot_games.util.DBUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @WebServlet("/HelloServlet")
 @MultipartConfig
@@ -19,7 +23,12 @@ public class HelloServlet extends HttpServlet {
         if (action.equals("game")) {
             url = checkUser(request, response);
         } else if (action.equals("rank")) {
-            // codes for fetching ranking data and appending the data to request
+            ArrayList<String> games = DBUtil.getGames();
+            HashMap<String, String> ranks = new HashMap<>();
+            for (String game: games) {
+                ranks.put(game, RecordDB.getGameRecords(game));
+            }
+            request.setAttribute("ranks", ranks);
             url = "/rank.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -33,7 +42,27 @@ public class HelloServlet extends HttpServlet {
         if (action.equals("register")) {
             url = registerUser(request, response);
         } else if (action.equals("score")) {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            String id = user.getId();
+            String game = request.getParameter("game");
+            int record = Integer.parseInt(request.getParameter("data"));
 
+            if (RecordDB.containsRecord(id, game)) {
+                int oldRecord = RecordDB.getRecord(id, game);
+                if (game.equals("snake")) {
+                    if (record > oldRecord) {
+                        RecordDB.updateRecord(id, game, record);
+                    }
+                } else if (game.equals("minesweeper_beginner") || game.equals("minesweeper_intermediate") || game.equals("minesweeper_expert")) {
+                    if (record < oldRecord) {
+                        RecordDB.updateRecord(id, game, record);
+                    }
+                }
+            } else {
+                RecordDB.insertRecord(id, game, record);
+            }
+            url = checkGame(game);
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
