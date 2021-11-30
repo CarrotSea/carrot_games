@@ -10,16 +10,19 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="styles/rank.css">
 </head>
 <body>
-<h1>Ranks:</h1>
-
-<c:forEach var="entry" items="${ranks}">
-    <div class="game_rank">
-        <h2>${entry.key}</h2>
-            ${entry.value}
-    </div>
-</c:forEach>
-
+<header>
+    <h1>Ranks:</h1>
+</header>
+<section>
+    <c:forEach var="entry" items="${ranks}">
+        <div class="game_rank">
+            <h2>${entry.key}</h2>
+                ${entry.value}
+        </div>
+    </c:forEach>
+</section>
 </body>
 </html>
