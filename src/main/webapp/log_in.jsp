@@ -11,7 +11,7 @@
     <title>Log in</title>
 </head>
 <body>
-<h1>Log in: </h1>
+<h1>Log in with Id and password: </h1>
 <form action="HelloServlet" method="post">
     <input type="hidden" name="action" value="log_in">
     <label for="id">ID:</label>
