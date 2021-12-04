@@ -10,8 +10,8 @@
 <header>
     <h1>Welcome to Carrot Games!</h1>
     <p>This is a gallery for some funny little games I've written with HTML, CSS, and JavaScript. </p>
-    <p>Log in to compete with others by submitting your records!</p>
-    <p>Register if you do not have an account yet.</p>
+    <p><a href="log_in.jsp">Log in</a> to compete with others by submitting your records!</p>
+    <p><a href="register.jsp">Register</a> if you do not have an account yet.</p>
     <p>Check your <a href="HelloServlet?action=rank">ranks</a> here.</p>
     <p>Have fun!</p>
 </header>

@@ -39,7 +39,9 @@ public class HelloServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         String url = "/index.jsp";
-        if (action.equals("register")) {
+        if (action.equals("log_in")){
+            url = logInUser(request, response);
+        } else if (action.equals("register")) {
             url = registerUser(request, response);
         } else if (action.equals("score")) {
             HttpSession session = request.getSession();
@@ -109,6 +111,34 @@ public class HelloServlet extends HttpServlet {
         return url;
     }
 
+    private String logInUser(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+        String url = "";
+        String message = "";
+
+        if (!UserDB.containsUser(id)) {
+            message = "Id does not exist. Please register before you log in.";
+            request.setAttribute("message", message);
+            url = "/log_in.jsp";
+        } else {
+            User user = UserDB.getUser(id);
+            if (!password.equals(user.getPassword())) {
+                message = "Password does not match.";
+                request.setAttribute("message", message);
+                url = "/log_in.jsp";
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                Cookie c = new Cookie("idCookie", id);
+                c.setMaxAge(60 * 60 * 24 * 365);
+                c.setPath("/");
+                response.addCookie(c);
+                url = "/index.jsp";
+            }
+        }
+        return url;
+    }
     private String registerUser(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         String password = request.getParameter("password");

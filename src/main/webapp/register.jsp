@@ -21,6 +21,6 @@
         <input type="submit" value="Submit">
     </form>
     <p>${message}</p>
-    <p>If you have already registered, please <a href="log_in.jsp">log in</a></p>
+    <p>If you already have an account, log in <a href="log_in.jsp">here</a></p>
 </body>
 </html>

@@ -20,5 +20,7 @@
     <input id="password" type="password" name="password">
     <input type="submit" value="Submit">
 </form>
+<p>${message}</p>
+<p>If you do not have an account yet, register <a href="register.jsp">here</a></p>
 </body>
 </html>
