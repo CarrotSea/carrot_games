@@ -18,25 +18,25 @@
 <section id="gallery">
     <div id="mine_sweeper_beginner">
         <a href="HelloServlet?action=game&game=minesweeper_beginner">
-            <img src="gomoku.jpg" alt="Mine Sweeper(Beginner)" width="50" height="70">
+            <img src="./images/minesweeper_beginner.png" alt="Mine Sweeper(Beginner)" width="100" height="100">
             <p class="description">Mine Sweeper(Beginner)</p>
         </a>
     </div>
     <div id="mine_sweeper_intermediate">
         <a href="HelloServlet?action=game&game=minesweeper_intermediate">
-            <img src="gomoku.jpg" alt="Mine Sweeper(Intermediate)" width="50" height="70">
+            <img src="./images/minesweeper_intermediate.png" alt="Mine Sweeper(Intermediate)" width="100" height="100">
             <p class="description">Mine Sweeper(Intermediate)</p>
         </a>
     </div>
     <div id="mine_sweeper_expert">
         <a href="HelloServlet?action=game&game=minesweeper_expert">
-            <img src="gomoku.jpg" alt="Mine Sweeper(Expert)" width="50" height="70">
+            <img src="./images/minesweeper_expert.png" alt="Mine Sweeper(Expert)" width="100" height="100">
             <p class="description">Mine Sweeper(Expert)</p>
         </a>
     </div>
     <div id="snake">
         <a href="HelloServlet?action=game&game=snake">
-            <img src="gomoku.jpg" alt="Snake" width="50" height="70">
+            <img src="./images/snake.png" alt="Snake" width="100" height="100">
             <p class="description">Snake</p>
         </a>
     </div>

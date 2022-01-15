@@ -52,7 +52,7 @@ function populate() {
     for (let i = 0; i < BOMB; i++) {
         let index = Math.floor(Math.random() * (ROW * COLUMN));
         grids[index].classList.add('bomb');
-        grids[index].classList.add('bomb_show');
+
     }
 }
 

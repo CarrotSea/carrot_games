@@ -1,9 +1,6 @@
 package com.alex.carrot_games.data;
-
 import com.alex.carrot_games.util.DBUtil;
-
 import java.sql.*;
-import java.util.ArrayList;
 
 public class RecordDB {
 

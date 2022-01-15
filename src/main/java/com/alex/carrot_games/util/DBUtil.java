@@ -14,7 +14,7 @@ public class DBUtil {
         }
         String dbURL = "jdbc:mysql://localhost:3306/carrot_games";
         String username = "root";
-        String password = "12345yxlm";
+        String password = "root";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(
